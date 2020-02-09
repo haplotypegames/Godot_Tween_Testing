@@ -7,6 +7,7 @@ I was having some unexpected behavior in my game after I would reset a level mul
 tweened nodes would behave unexpectedly.  I eventually determined that the the on_tween_all_completed() callback was not being called when the
 tween ended.  
 
-I uncommented the logic in the on_tween_all_completed() callback except for a print statement.
-I moved the logic into the on_tween_completed() callback and it works as expected.
-After hitting 'F1' a certain number of times, you will observe the the on_tween_all_completed() callback stops being called.
+To reproduce: Play the project.  Hit the 'F1' key and eventually, the sprite will stop animating.
+Observe the print statements and you will see that the on_tween_all_completed() callback doesn't get called. If you comment out the
+logic in theon_tween_all_completed() callback and uncomment the logic in the on_tween_completed() callback, it will work correctly.
+If you leave the print statement in the on_tween_all_completed() callback, you will see it doesn't get called.
