@@ -48,13 +48,13 @@ func _on_Timer_timeout():
 
 func _on_Tween_tween_all_completed(): #This stops being called at some point after resetting
 	print("Tween all complete")
-#	if current_alpha < 0.1: #Is hidden
-#		tween_starting_alpha = 0.0
-#		tween_target_alpha = 1.0
-#	else:
-#		tween_starting_alpha = 1.0 #Not hidden
-#		tween_target_alpha = 0.0
-#	alternate()
+	if current_alpha < 0.1: #Is hidden
+		tween_starting_alpha = 0.0
+		tween_target_alpha = 1.0
+	else:
+		tween_starting_alpha = 1.0 #Not hidden
+		tween_target_alpha = 0.0
+	alternate()
 
 func _on_Tween_tween_step(object, key, elapsed, value):
 	print("In step - value: ", value)
@@ -64,11 +64,11 @@ func _on_Tween_tween_step(object, key, elapsed, value):
 
 func _on_Tween_tween_completed(object, key): #This gets called correctly
 	print("Tween key complete")
-	if key == ":current_alpha":
-		if current_alpha < 0.1: #Is hidden
-			tween_starting_alpha = 0.0
-			tween_target_alpha = 1.0
-		else:
-			tween_starting_alpha = 1.0 #Not hidden
-			tween_target_alpha = 0.0
-		alternate()
+#	if key == ":current_alpha":
+#		if current_alpha < 0.1: #Is hidden
+#			tween_starting_alpha = 0.0
+#			tween_target_alpha = 1.0
+#		else:
+#			tween_starting_alpha = 1.0 #Not hidden
+#			tween_target_alpha = 0.0
+#		alternate()
