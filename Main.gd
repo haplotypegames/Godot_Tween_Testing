@@ -16,20 +16,21 @@ func _ready():
 	start()
 
 func start():
-	print("Starting.")
+	#print("Starting.")
 	alternate()
 
 func alternate():
 	if !resetting:
-		print("Alternating.")
+		#print("Alternating.")
 		$Timer.start()
 
 func reset():
 	resetting = true
-	print("Resetting.")
+	#print("Resetting.")
 	yield(get_tree(),"idle_frame")
 	$Timer.stop()
 	$Tween.stop_all()
+	#$Tween.stop(self, "current_alpha") #Doesn't get called after stop() either
 	#$Tween.reset_all() #Added this in when testing
 	tween_starting_alpha = 1.0
 	tween_target_alpha = 0.0
@@ -40,8 +41,8 @@ func reset():
 	start()
 
 func _on_Timer_timeout():
-	print("Timer timed out. Starting tween. Current Alpha: ", current_alpha, " , starting alpha: ", tween_starting_alpha, \
-	" , target alpha: ", tween_target_alpha)
+#	print("Timer timed out. Starting tween. Current Alpha: ", current_alpha, " , starting alpha: ", tween_starting_alpha, \
+#	" , target alpha: ", tween_target_alpha)
 	$Tween.interpolate_property(self, "current_alpha", tween_starting_alpha, tween_target_alpha, tween_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$Tween.start()
 
@@ -57,7 +58,7 @@ func _on_Tween_tween_all_completed(): #This stops being called at some point aft
 	alternate()
 
 func _on_Tween_tween_step(object, key, elapsed, value):
-	print("In step - value: ", value)
+	#print("In step - value: ", value)
 	new_modulate.a = value
 	$Sprite.modulate = new_modulate
 
